@@ -1,0 +1,204 @@
+/*************
+ * Container styles
+ *************/
+ .loan-schemes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white; /* A soft pastel background */
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+/*************
+ * Card styling
+ *************/
+.card {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Example of a custom border color for the card */
+.border-custom {
+  border: 2px solid #af4cbf; /* Purple border */
+}
+
+/*************
+ * Card text
+ *************/
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/*************
+ * Buttons
+ *************/
+.btn-primary.btn-sm {
+  background-color: #af4cbf; /* Purple button */
+  border-color: #af4cbf;
+}
+.btn-primary.btn-sm:hover {
+  background-color: #921ea7;
+  border-color: #921ea7;
+}
+
+/*************
+ * Pagination & other UI controls
+ *************/
+.pagination-controls {
+  margin-top: 1rem;
+}
+
+.page-size-container,
+.page-info {
+  margin-top: 1rem;
+}
+
+/*************
+ * Media queries (optional)
+ *************/
+@media (max-width: 768px) {
+  .loan-schemes-container {
+    padding: 1rem;
+  }
+}
+
+/* Custom Modal Styling */
+.custom-modal-content {
+  background: rgba(255, 255, 255, 0.1); /* Slight white transparency */
+  backdrop-filter: blur(10px); /* Glass effect */
+  border-radius: 15px; /* Rounded corners for the modal */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+}
+
+/* Modal Header */
+.custom-modal-header {
+  background: linear-gradient(135deg, #921ea7, #F0B7E4); /* Magenta gradient */
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.custom-modal-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Modal Body */
+.custom-modal-body {
+  padding: 20px;
+  /* background: rgba(255, 255, 255, 0.3); / / Semi-transparent white */
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Form Glass Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1); /* Transparent background for glass effect */
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Input Styling */
+.magenta-input {
+  background-color: rgba(255, 255, 255, 0.2); /* Light background */
+  border: 1px solid #e5a1d6; /* Magenta border */
+  border-radius: 5px;
+  color: rgb(16, 16, 16);
+}
+
+.magenta-input:focus {
+  border-color: #F3A1D6;
+  box-shadow: 0 0 5px rgba(243, 161, 214, 0.8);
+  outline: none;
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: #F3A1D6; /* Magenta primary button */
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 15px;
+}
+
+.btn-primary:hover {
+  background-color: #F0B7E4; /* Lighter magenta shade */
+}
+
+.btn-secondary {
+  background-color: #6C757D; /* Gray color for close button */
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+
+
+.btn-secondary:hover {
+  background-color: #5A6268; /* Slightly darker gray on hover */
+}
+
+/* Modal Footer Styling */
+.modal-footer {
+  background: rgba(0, 0, 0, 0.05); /* Subtle transparent background */
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+/*************
+ * Pagination
+ *************/
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 10px; /* Space between buttons */
+}
+
+.pagination-controls a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #007bff; /* Default blue text */
+  border: 1px solid #dee2e6; /* Light gray border */
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.pagination-controls a:hover {
+  background-color: #f8f9fa; /* Light gray background on hover */
+  border-color: #adb5bd; /* Slightly darker gray border */
+}
+
+.pagination-controls .active {
+  background-color: #007bff; /* Blue background for active page */
+  color: white;
+  border-color: #007bff; /* Blue border */
+}
+
+.pagination-controls .active:hover {
+  background-color: #0056b3; /* Darker blue when hovering active page */
+}
+
+.pagination-controls .disabled {
+  color: #6c757d; /* Gray text for disabled buttons */
+  pointer-events: none; /* Prevent clicks */
+  background-color: #e9ecef; /* Gray background for disabled state */
+  border-color: #dee2e6;
+}
+
+/* Responsive Pagination */
+@media (max-width: 768px) {
+  .pagination-controls a {
+    padding: 6px 12px; /* Smaller padding for mobile devices */
+    font-size: 0.875rem; /* Slightly smaller font size */
+  }
+}

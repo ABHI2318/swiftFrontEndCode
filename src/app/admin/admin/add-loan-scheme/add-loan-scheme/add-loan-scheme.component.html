@@ -1,0 +1,160 @@
+<!-- <div class="registration-container">
+  <h2 class="registration-title">Add New Loan Scheme</h2>
+
+  <form [formGroup]="loanSchemeForm" (ngSubmit)="onSubmit()">
+  
+    <div class="form-group">
+      <label for="schemename" class="form-label">Scheme Name</label>
+      <input id="schemename" formControlName="schemename" type="text" class="form-control" placeholder="Enter Scheme Name" />
+     
+      <div *ngIf="loanSchemeForm.get('schemename')?.invalid && loanSchemeForm.get('schemename')?.touched">
+        <small *ngIf="loanSchemeForm.get('schemename')?.hasError('required')" class="text-danger">Scheme Name is required.</small>
+        <small *ngIf="loanSchemeForm.get('schemename')?.hasError('pattern')" class="text-danger">Only alphabets are allowed in Scheme Name.</small>
+      </div>
+    </div>
+
+    
+    <div class="form-group">
+      <label for="maxamount" class="form-label">Maximum Amount</label>
+      <input id="maxamount" formControlName="maxamount" type="number" class="form-control" placeholder="Enter Maximum Amount" />
+     
+      <div *ngIf="loanSchemeForm.get('maxamount')?.invalid && loanSchemeForm.get('maxamount')?.touched">
+        <small *ngIf="loanSchemeForm.get('maxamount')?.hasError('required')" class="text-danger">Maximum Amount is required.</small>
+        <small *ngIf="loanSchemeForm.get('maxamount')?.hasError('pattern')" class="text-danger">Please enter a valid number.</small>
+      </div>
+    </div>
+
+    
+    <div class="form-group">
+      <label for="minamount" class="form-label">Minimum Amount</label>
+      <input id="minamount" formControlName="minamount" type="number" class="form-control" placeholder="Enter Minimum Amount" />
+      
+      <div *ngIf="loanSchemeForm.get('minamount')?.invalid && loanSchemeForm.get('minamount')?.touched">
+        <small *ngIf="loanSchemeForm.get('minamount')?.hasError('required')" class="text-danger">Minimum Amount is required.</small>
+        <small *ngIf="loanSchemeForm.get('minamount')?.hasError('pattern')" class="text-danger">Please enter a valid number.</small>
+      </div>
+    </div>
+
+  
+    <div class="form-group">
+      <label for="interest" class="form-label">Interest Rate (%)</label>
+      <input id="interest" formControlName="interest" type="number" class="form-control" placeholder="Enter Interest Rate" />
+     
+      <div *ngIf="loanSchemeForm.get('interest')?.invalid && loanSchemeForm.get('interest')?.touched">
+        <small *ngIf="loanSchemeForm.get('interest')?.hasError('required')" class="text-danger">Interest Rate is required.</small>
+        <small *ngIf="loanSchemeForm.get('interest')?.hasError('pattern')" class="text-danger">Please enter a valid number.</small>
+      </div>
+    </div>
+
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div> -->
+<!-- add-loan-scheme.component.html -->
+<div class="container">
+  <h2>Add New Loan Scheme</h2>
+
+  <!-- Display Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="loanSchemeForm" (ngSubmit)="onSubmit()">
+    <!-- Scheme Name -->
+    <div class="form-group">
+      <label for="schemename" class="form-label">Scheme Name</label>
+      <input 
+        id="schemename" 
+        formControlName="schemename" 
+        type="text" 
+        class="form-control" 
+        placeholder="Enter Scheme Name" 
+      />
+      <!-- Error messages for Scheme Name -->
+      <small 
+        *ngIf="loanSchemeForm.get('schemename')?.invalid && loanSchemeForm.get('schemename')?.touched"
+        class="text-danger">
+        <span *ngIf="loanSchemeForm.get('schemename')?.hasError('required')">
+          Scheme Name is required.
+        </span>
+        <span *ngIf="loanSchemeForm.get('schemename')?.hasError('pattern')">
+          Only alphabets are allowed in Scheme Name.
+        </span>
+      </small>
+    </div>
+
+    <!-- Maximum Amount -->
+    <div class="form-group">
+      <label for="maxamount" class="form-label">Maximum Amount</label>
+      <input 
+        id="maxamount" 
+        formControlName="maxamount" 
+        type="number" 
+        class="form-control" 
+        placeholder="Enter Maximum Amount" 
+      />
+      <!-- Error messages for Max Amount -->
+      <small 
+        *ngIf="loanSchemeForm.get('maxamount')?.invalid && loanSchemeForm.get('maxamount')?.touched"
+        class="text-danger">
+        <span *ngIf="loanSchemeForm.get('maxamount')?.hasError('required')">
+          Maximum Amount is required.
+        </span>
+        <span *ngIf="loanSchemeForm.get('maxamount')?.hasError('pattern')">
+          Please enter a valid number.
+        </span>
+      </small>
+    </div>
+
+    <!-- Minimum Amount -->
+    <div class="form-group">
+      <label for="minamount" class="form-label">Minimum Amount</label>
+      <input 
+        id="minamount" 
+        formControlName="minamount" 
+        type="number" 
+        class="form-control" 
+        placeholder="Enter Minimum Amount" 
+      />
+      <!-- Error messages for Min Amount -->
+      <small 
+        *ngIf="loanSchemeForm.get('minamount')?.invalid && loanSchemeForm.get('minamount')?.touched"
+        class="text-danger">
+        <span *ngIf="loanSchemeForm.get('minamount')?.hasError('required')">
+          Minimum Amount is required.
+        </span>
+        <span *ngIf="loanSchemeForm.get('minamount')?.hasError('pattern')">
+          Please enter a valid number.
+        </span>
+      </small>
+    </div>
+
+    <!-- Interest Rate -->
+    <div class="form-group">
+      <label for="interest" class="form-label">Interest Rate (%)</label>
+      <input 
+        id="interest" 
+        formControlName="interest" 
+        type="number" 
+        class="form-control" 
+        placeholder="Enter Interest Rate" 
+      />
+      <!-- Error messages for Interest Rate -->
+      <small 
+        *ngIf="loanSchemeForm.get('interest')?.invalid && loanSchemeForm.get('interest')?.touched"
+        class="text-danger">
+        <span *ngIf="loanSchemeForm.get('interest')?.hasError('required')">
+          Interest Rate is required.
+        </span>
+        <span *ngIf="loanSchemeForm.get('interest')?.hasError('pattern')">
+          Please enter a valid number.
+        </span>
+      </small>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>

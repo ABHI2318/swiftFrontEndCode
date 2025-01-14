@@ -1,0 +1,104 @@
+/* Glassy Effect with Light Magenta and Bold Capitalized Text */
+body {
+ font-family: 'Josefin Sans', sans-serif;
+ background-color: #f4f4f4;
+}
+
+.card {
+ border-radius: 15px;
+ background: rgba(255, 255, 255, 0.7); /* Lighter background to make it more white */
+ backdrop-filter: blur(10px); /* Glassy effect */
+ box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+ padding: 20px;
+ border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-body {
+ padding: 20px;
+ color: #333; /* Dark text color for contrast */
+ background: rgba(255, 255, 255, 0.8); /* More white and less opacity */
+ border-radius: 10px;
+ backdrop-filter: blur(15px);
+}
+
+.work {
+ background: linear-gradient(145deg, #f7f7f7, #d98cdc); /* Subtle magenta gradient with more white */
+}
+
+h4, p {
+ font-weight: bold; /* Make headings and text bold */
+ text-transform: uppercase; /* Convert text to uppercase */
+ color: #333; /* Darker text color for better readability */
+ letter-spacing: 1px; /* Add spacing between letters to make it stand out */
+}
+
+button.btn-success {
+ background-color: #d98cdc; /* Light magenta color */
+ border: none;
+ color: #fff;
+ padding: 10px 20px;
+ border-radius: 8px;
+ font-size: 16px;
+ font-weight: bold; /* Make button text bold */
+ text-transform: uppercase; /* Convert button text to uppercase */
+ transition: background-color 0.3s ease;
+}
+
+button.btn-success:hover {
+ background-color: #b865a2; /* Slightly darker shade on hover */
+}
+
+select.form-control,
+input.form-control {
+ background-color: rgba(255, 255, 255, 0.4); /* Lighter background */
+ color: #333; /* Darker text for contrast */
+ border: 1px solid rgba(255, 255, 255, 0.5);
+ border-radius: 8px;
+ padding: 10px;
+ transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+select.form-control:focus,
+input.form-control:focus {
+ background-color: rgba(255, 255, 255, 0.6);
+ border-color: #d98cdc;
+ outline: none;
+}
+
+.card-body b {
+ font-size: 20px;
+ font-weight: bold; /* Bold the values in the result */
+}
+
+.card-body h4 {
+ font-size: 22px;
+ text-transform: uppercase; /* Capitalize the headings */
+}
+
+.col-lg-4 {
+ margin: 20px;
+ padding: 10px;
+}
+
+/* Flexbox layout for cards side by side */
+.row {
+ display: flex;
+ justify-content: space-between;
+ align-items: stretch;
+ flex-wrap: wrap;
+}
+
+.col-lg-4 {
+ flex: 1;
+ margin: 10px;
+ padding: 0;
+}
+
+.col-md-12 {
+ padding: 10px;
+}
+
+/* Adding a soft glow effect for text */
+h4, b {
+ text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.6);
+}
