@@ -45,7 +45,7 @@ export class ViewemiComponent {
         
         this.emis.forEach((emi, index) => {
           const emiDate = new Date(emi.date); // Parse the date string into a Date object
-          emiDate.setMonth(emiDate.getMonth() + index); // Increment month by index
+          // emiDate.setMonth(emiDate.getMonth() + index); // Increment month by index
           emi.date = emiDate.toLocaleDateString(); // Update the date
         });
       },

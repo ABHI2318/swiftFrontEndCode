@@ -61,27 +61,22 @@ export class QueriesComponent implements OnInit {
 
   // Fetch submitted queries from backend
   fetchQueries(): void {
-    this.queryService.getAllQueries(this.currentPage - 1, this.pageSize).subscribe({
-      next: (response) => {
-        this.queries = response.contents; // Backend response structure
-        this.totalPages = response.totalPages;
-        // this.toastr.info('Queries fetched successfully!', 'Info', {
-        //   timeOut: 5000,
-        //   progressBar: true,
-        //   closeButton: true,
-        //   positionClass: 'toast-top-right', // Position set manually
-        // });
-      },
-      error: (err) => {
-        console.error('Error fetching queries:', err);
-        this.toastr.warning('Failed to fetch queries. Please try again later.', 'Warning', {
-          timeOut: 5000,
-          progressBar: true,
-          closeButton: true,
-          positionClass: 'toast-top-right', // Position set manually
-        });
-      },
-    });
+    this.queryService.getAllQueries(this.currentPage - 1, this.pageSize)
+      .subscribe({
+        next: (response) => {
+          this.queries = response.contents.reverse(); // Reverse to show latest first
+          this.totalPages = response.totalPages;
+        },
+        error: (err) => {
+          console.error('Error fetching queries:', err);
+          this.toastr.warning('Failed to fetch queries. Please try again later.', 'Warning', {
+            timeOut: 5000,
+            progressBar: true,
+            closeButton: true,
+            positionClass: 'toast-top-right',
+          });
+        },
+      });
   }
 
   // Pagination: go to previous page
