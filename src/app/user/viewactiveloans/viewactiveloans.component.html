@@ -116,8 +116,8 @@
           <div class="loan-details">
             <p><strong>Loan Amount:</strong> {{ loan.loanamount | currency:'INR':'symbol'}}</p>
             <p><strong>Time (Years):</strong> {{ loan.time }}</p>
-            <p><strong>Simple Interest:</strong> {{ loan.simpleInterest }}%</p>
-            <p><strong>Monthly Repayment:</strong> {{ loan.monthlyRepayment | currency }}</p>
+        
+            <p><strong>Monthly Repayment:</strong> {{ loan.monthlyRepayment | currency:'INR':'symbol' }}</p>
           </div>
         </div>
         <button class="btn btn-primary btn-sm" [routerLink]="['/user/viewemi']" [queryParams]="{ loanId: loan.loanid }">

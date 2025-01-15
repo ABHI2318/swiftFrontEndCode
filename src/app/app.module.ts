@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, } from './app.component';
@@ -36,7 +39,12 @@ import { SlideComponent } from './landing-page/slide/slide.component';
     BrowserModule,
     AppRoutingModule,AdminModule,LoginModule,ServicesModule,ReactiveFormsModule,FormsModule,
     HttpClientModule,LandingPageModule,RegisterModule,RouterModule, NgbModule,
-    UserModule, LoanofficerModule, NgbModule
+    UserModule, LoanofficerModule, NgbModule,BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000, // Toast duration in milliseconds
+      positionClass: 'toast-top-right', // Position of the toast
+      preventDuplicates: true, // Prevent duplicate toasts
+    }),
     
   ],
   providers: [{ 

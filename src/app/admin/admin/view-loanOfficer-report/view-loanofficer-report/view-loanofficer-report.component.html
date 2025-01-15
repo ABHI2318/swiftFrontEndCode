@@ -66,33 +66,37 @@
 <div class="container mt-4">
   <h2 class="text-center">Loan Officer Report</h2>
 
-  <!-- Table for Loan Officer Report -->
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Officer Name</th>
-        <th>Approved Count</th>
-        <th>Rejected Count</th>
-        <th>Pending Count</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let officer of loanOfficers">
-        <td>{{ officer.officerFirstName }} {{ officer.officerLastName }}</td>
-        <td>{{ officer.approvedCount }}</td>
-        <td>{{ officer.rejectedCount }}</td>
-        <td>{{ officer.pendingCount }}</td>
-        <td>
-          <button class="btn btn-info btn-sm btn-spacing btn-approved" (click)="viewLoans(officer, 'approved')">View Approved</button>
-          <button class="btn btn-info btn-sm btn-spacing btn-rejected" (click)="viewLoans(officer, 'rejected')">View Rejected</button>
-          <button class="btn btn-info btn-sm btn-spacing btn-pending" (click)="viewLoans(officer, 'pending')">View Pending</button>
-        </td>
-        
-        
-      </tr>
-    </tbody>
-  </table>
+  <!-- Cards for Loan Officer Report -->
+  <div class="card-container">
+    <div class="card" *ngFor="let officer of loanOfficers">
+      <div class="card-body">
+        <h5 class="card-title">{{ officer.officerFirstName }} {{ officer.officerLastName }}</h5>
+        <p class="card-text"><strong>Approved Count:</strong> {{ officer.approvedCount }}</p>
+        <p class="card-text"><strong>Rejected Count:</strong> {{ officer.rejectedCount }}</p>
+        <p class="card-text"><strong>Pending Count:</strong> {{ officer.pendingCount }}</p>
+        <div class="card-actions">
+          <button
+            class="btn btn-info btn-sm btn-spacing btn-approved"
+            (click)="viewLoans(officer, 'approved')"
+          >
+            View Approved
+          </button>
+          <button
+            class="btn btn-info btn-sm btn-spacing btn-rejected"
+            (click)="viewLoans(officer, 'rejected')"
+          >
+            View Rejected
+          </button>
+          <button
+            class="btn btn-info btn-sm btn-spacing btn-pending"
+            (click)="viewLoans(officer, 'pending')"
+          >
+            View Pending
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal for Viewing Loans -->
   <div class="custom-modal" *ngIf="isModalOpen">
@@ -130,4 +134,3 @@
     </div>
   </div>
 </div>
-

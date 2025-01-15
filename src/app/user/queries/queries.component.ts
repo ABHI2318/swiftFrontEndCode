@@ -1,10 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { QueryService } from 'src/app/services/queries/query.service';
-import * as $ from 'jquery';
-import * as bootstrap from 'bootstrap';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-queries',
@@ -12,14 +9,17 @@ import * as bootstrap from 'bootstrap';
   styleUrls: ['./queries.component.css'],
 })
 export class QueriesComponent implements OnInit {
-
   uploadForm: FormGroup;
   queries: any[] = [];
   currentPage: number = 1;
   totalPages: number = 1;
   pageSize: number = 5;
 
-  constructor(private fb: FormBuilder, private queryService: QueryService) {
+  constructor(
+    private fb: FormBuilder,
+    private queryService: QueryService,
+    private toastr: ToastrService // Inject ToastrService
+  ) {
     this.uploadForm = this.fb.group({
       question: ['', [Validators.required]],
       querytype: ['', [Validators.required]],
@@ -34,21 +34,30 @@ export class QueriesComponent implements OnInit {
   onSubmit(): void {
     if (this.uploadForm.valid) {
       const queryData = this.uploadForm.value;
-  
+
       this.queryService.submitQueryapplication(queryData).subscribe({
         next: () => {
           this.uploadForm.reset(); // Reset form
           this.fetchQueries(); // Fetch updated queries
-          alert('Query submitted successfully!'); // Show success alert
+          this.toastr.success('Query submitted successfully!', 'Success', {
+            timeOut: 5000,
+            progressBar: true,
+            closeButton: true,
+            positionClass: 'toast-top-right', // Position set manually
+          });
         },
         error: (err) => {
           console.error('Error submitting query:', err);
-          alert('Failed to submit query. Please try again.'); // Show error alert
+          this.toastr.error('Failed to submit query. Please try again.', 'Error', {
+            timeOut: 5000,
+            progressBar: true,
+            closeButton: true,
+            positionClass: 'toast-top-right', // Position set manually
+          });
         },
       });
     }
   }
-  
 
   // Fetch submitted queries from backend
   fetchQueries(): void {
@@ -56,21 +65,36 @@ export class QueriesComponent implements OnInit {
       next: (response) => {
         this.queries = response.contents; // Backend response structure
         this.totalPages = response.totalPages;
-        console.log(this.queries);
+        // this.toastr.info('Queries fetched successfully!', 'Info', {
+        //   timeOut: 5000,
+        //   progressBar: true,
+        //   closeButton: true,
+        //   positionClass: 'toast-top-right', // Position set manually
+        // });
       },
       error: (err) => {
         console.error('Error fetching queries:', err);
-        alert('Failed to fetch queries. Please try again later.');
+        this.toastr.warning('Failed to fetch queries. Please try again later.', 'Warning', {
+          timeOut: 5000,
+          progressBar: true,
+          closeButton: true,
+          positionClass: 'toast-top-right', // Position set manually
+        });
       },
     });
   }
-  
 
   // Pagination: go to previous page
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.fetchQueries();
+      this.toastr.info('Moved to the previous page.', 'Info', {
+        timeOut: 5000,
+        progressBar: true,
+        closeButton: true,
+        positionClass: 'toast-top-right', // Position set manually
+      });
     }
   }
 
@@ -79,6 +103,12 @@ export class QueriesComponent implements OnInit {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
       this.fetchQueries();
+      this.toastr.info('Moved to the next page.', 'Info', {
+        timeOut: 5000,
+        progressBar: true,
+        closeButton: true,
+        positionClass: 'toast-top-right', // Position set manually
+      });
     }
   }
 }
